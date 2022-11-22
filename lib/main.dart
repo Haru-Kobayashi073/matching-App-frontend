@@ -1,6 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:matching_app/constants/routes.dart' as routes;
+import 'package:matching_app/firebase_options.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -35,6 +42,20 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        actions: [
+          TextButton(
+              onPressed: () => routes.toSignupPage(context: context),
+              child: Text(
+                '新規登録',
+                style: TextStyle(color: Colors.white),
+              )),
+          TextButton(
+              onPressed: () => routes.toLoginPage(context: context),
+              child: Text(
+                'ログイン',
+                style: TextStyle(color: Colors.white),
+              )),
+        ],
       ),
       body: Center(),
     );
