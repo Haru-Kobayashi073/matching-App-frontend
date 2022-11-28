@@ -1,7 +1,9 @@
 //flutter
 import 'package:flutter/material.dart';
+import 'package:matching_app/details/rounded_button.dart';
 import 'package:matching_app/details/rounded_text_field.dart';
 import 'package:matching_app/details/text_field_container.dart';
+import 'package:matching_app/constants/routes.dart' as routes;
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -55,6 +57,13 @@ class _SignupPageState extends State<SignupPage> {
               color: Colors.white,
               borderColor: Colors.white,
               hintText: 'パスワード'),
+          RoundedButton(
+              onPressed: () {
+                routes.toHomeScreenPage(context: context);
+              },
+              widthRate: 0.4,
+              color: Colors.blue,
+              text: '登録')
         ],
       ),
     );
