@@ -23,7 +23,8 @@ mixin _$FirestoreUser {
   dynamic get createdAt => throw _privateConstructorUsedError;
   dynamic get updatedAt => throw _privateConstructorUsedError;
   String get userName => throw _privateConstructorUsedError;
-  String get uid => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,7 +39,11 @@ abstract class $FirestoreUserCopyWith<$Res> {
       _$FirestoreUserCopyWithImpl<$Res, FirestoreUser>;
   @useResult
   $Res call(
-      {dynamic createdAt, dynamic updatedAt, String userName, String uid});
+      {dynamic createdAt,
+      dynamic updatedAt,
+      String userName,
+      String userId,
+      String email});
 }
 
 /// @nodoc
@@ -57,7 +62,8 @@ class _$FirestoreUserCopyWithImpl<$Res, $Val extends FirestoreUser>
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? userName = null,
-    Object? uid = null,
+    Object? userId = null,
+    Object? email = null,
   }) {
     return _then(_value.copyWith(
       createdAt: null == createdAt
@@ -72,9 +78,13 @@ class _$FirestoreUserCopyWithImpl<$Res, $Val extends FirestoreUser>
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
               as String,
-      uid: null == uid
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -89,7 +99,11 @@ abstract class _$$_FirestoreUserCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {dynamic createdAt, dynamic updatedAt, String userName, String uid});
+      {dynamic createdAt,
+      dynamic updatedAt,
+      String userName,
+      String userId,
+      String email});
 }
 
 /// @nodoc
@@ -106,7 +120,8 @@ class __$$_FirestoreUserCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? userName = null,
-    Object? uid = null,
+    Object? userId = null,
+    Object? email = null,
   }) {
     return _then(_$_FirestoreUser(
       createdAt: null == createdAt
@@ -121,9 +136,13 @@ class __$$_FirestoreUserCopyWithImpl<$Res>
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
               as String,
-      uid: null == uid
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -136,7 +155,8 @@ class _$_FirestoreUser with DiagnosticableTreeMixin implements _FirestoreUser {
       {required this.createdAt,
       required this.updatedAt,
       required this.userName,
-      required this.uid});
+      required this.userId,
+      required this.email});
 
   factory _$_FirestoreUser.fromJson(Map<String, dynamic> json) =>
       _$$_FirestoreUserFromJson(json);
@@ -148,11 +168,13 @@ class _$_FirestoreUser with DiagnosticableTreeMixin implements _FirestoreUser {
   @override
   final String userName;
   @override
-  final String uid;
+  final String userId;
+  @override
+  final String email;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'FirestoreUser(createdAt: $createdAt, updatedAt: $updatedAt, userName: $userName, uid: $uid)';
+    return 'FirestoreUser(createdAt: $createdAt, updatedAt: $updatedAt, userName: $userName, userId: $userId, email: $email)';
   }
 
   @override
@@ -163,7 +185,8 @@ class _$_FirestoreUser with DiagnosticableTreeMixin implements _FirestoreUser {
       ..add(DiagnosticsProperty('createdAt', createdAt))
       ..add(DiagnosticsProperty('updatedAt', updatedAt))
       ..add(DiagnosticsProperty('userName', userName))
-      ..add(DiagnosticsProperty('uid', uid));
+      ..add(DiagnosticsProperty('userId', userId))
+      ..add(DiagnosticsProperty('email', email));
   }
 
   @override
@@ -175,7 +198,8 @@ class _$_FirestoreUser with DiagnosticableTreeMixin implements _FirestoreUser {
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
-            (identical(other.uid, uid) || other.uid == uid));
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.email, email) || other.email == email));
   }
 
   @JsonKey(ignore: true)
@@ -185,7 +209,8 @@ class _$_FirestoreUser with DiagnosticableTreeMixin implements _FirestoreUser {
       const DeepCollectionEquality().hash(createdAt),
       const DeepCollectionEquality().hash(updatedAt),
       userName,
-      uid);
+      userId,
+      email);
 
   @JsonKey(ignore: true)
   @override
@@ -206,7 +231,8 @@ abstract class _FirestoreUser implements FirestoreUser {
       {required final dynamic createdAt,
       required final dynamic updatedAt,
       required final String userName,
-      required final String uid}) = _$_FirestoreUser;
+      required final String userId,
+      required final String email}) = _$_FirestoreUser;
 
   factory _FirestoreUser.fromJson(Map<String, dynamic> json) =
       _$_FirestoreUser.fromJson;
@@ -218,7 +244,9 @@ abstract class _FirestoreUser implements FirestoreUser {
   @override
   String get userName;
   @override
-  String get uid;
+  String get userId;
+  @override
+  String get email;
   @override
   @JsonKey(ignore: true)
   _$$_FirestoreUserCopyWith<_$_FirestoreUser> get copyWith =>

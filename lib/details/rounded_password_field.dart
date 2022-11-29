@@ -6,7 +6,7 @@ import 'package:matching_app/details/text_field_container.dart';
 class RoundedPasswordField extends StatelessWidget {
   const RoundedPasswordField({
     Key? key, 
-    // required this.onChanged, 
+    required this.onChanged, 
     required this.obscureText, 
     required this.passwordEditingController, 
     required this.toggleObscureText, 
@@ -14,7 +14,7 @@ class RoundedPasswordField extends StatelessWidget {
     required this.borderColor
     }) : super(key: key);
 
-  // final void Function(String)? onChanged;
+  final void Function(String)? onChanged;
   final TextEditingController passwordEditingController;
   final bool obscureText;
   final void Function()? toggleObscureText;
@@ -27,7 +27,7 @@ class RoundedPasswordField extends StatelessWidget {
       borderColor:borderColor ,
       child:  TextFormField(
             keyboardType: TextInputType.visiblePassword,
-            // onChanged: onChanged,
+            onChanged: onChanged,
             controller: passwordEditingController,
             obscureText: obscureText,
             decoration: InputDecoration(

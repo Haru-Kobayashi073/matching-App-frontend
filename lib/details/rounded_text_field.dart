@@ -5,7 +5,7 @@ class RoundedTextField extends StatelessWidget {
   const RoundedTextField(
       {Key? key,
       required this.keybordType,
-      // required this.onChanged,
+      required this.onChanged,
       required this.controller,
       required this.color,
       required this.borderColor,
@@ -13,7 +13,7 @@ class RoundedTextField extends StatelessWidget {
       })
       : super(key: key);
   final TextInputType keybordType;
-  // final void Function(String)? onChanged;
+  final void Function(String)? onChanged;
   final TextEditingController controller;
   final Color color;
   final Color borderColor;
@@ -25,7 +25,7 @@ class RoundedTextField extends StatelessWidget {
         borderColor: borderColor,
         child: TextFormField(
           keyboardType: keybordType,
-          // onChanged: onChanged,
+          onChanged: onChanged,
           decoration: InputDecoration(
             hintText: hintText,
             enabledBorder: InputBorder.none,

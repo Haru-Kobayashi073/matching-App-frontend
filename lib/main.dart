@@ -5,6 +5,8 @@ import 'package:matching_app/details/rounded_button.dart';
 import 'package:matching_app/firebase_options.dart';
 import 'package:matching_app/models/main_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:matching_app/models/signup_model.dart';
+import 'package:matching_app/views/login_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +27,7 @@ class MyApp extends ConsumerWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home: const LoginPage(),
     );
   }
 }
@@ -39,18 +41,16 @@ class MyHomePage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Title')
+        title: Text('Matching for your hobby')
         ),
-        body: Column(
-          children: [
-            Text('Hello')
-          ],
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Hello')
+            ],
+          ),
         ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => mainModel.createUser(context: context),
-        tooltip: 'Signup',
-        child: const Icon(Icons.add),
-      ),
     );
   }
 }

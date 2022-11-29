@@ -1,25 +1,23 @@
 //flutter
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:matching_app/details/rounded_button.dart';
+import 'package:matching_app/details/rounded_password_field.dart';
 import 'package:matching_app/details/rounded_text_field.dart';
 import 'package:matching_app/constants/routes.dart' as routes;
+import 'package:matching_app/models/login_model.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends ConsumerWidget {
   const LoginPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final LoginModel loginModel = ref.watch(loginProvider);
+    final TextEditingController emailController =
+        TextEditingController(text: loginModel.email);
+    final TextEditingController passController =
+        TextEditingController(text: loginModel.password);
 
-class _LoginPageState extends State<LoginPage> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController userIdController = TextEditingController();
-  TextEditingController selfIntroductionController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passController = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Matching for your hobby'),
@@ -28,21 +26,24 @@ class _LoginPageState extends State<LoginPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           RoundedTextField(
-              keybordType: TextInputType.name,
+              keybordType: TextInputType.emailAddress,
+              onChanged: (text) => loginModel.email = text,
               controller: emailController,
               color: Colors.white,
               borderColor: Colors.white,
               hintText: 'メールアドレス'),
-          RoundedTextField(
-              keybordType: TextInputType.name,
-              controller: passController,
+          SizedBox(
+            height: 20,
+          ),
+          RoundedPasswordField(
+              onChanged: (text) => loginModel.password = text,
+              obscureText: loginModel.isObscure,
+              passwordEditingController: passController,
+              toggleObscureText: () => loginModel.toggleIsObscure(),
               color: Colors.white,
-              borderColor: Colors.white,
-              hintText: 'パスワード'),
+              borderColor: Colors.white),
           RoundedButton(
-              onPressed: () {
-                routes.toHomeScreenPage(context: context);
-              },
+              onPressed: () async => await loginModel.login(context: context),
               widthRate: 0.4,
               color: Colors.blue,
               text: 'ログイン'),
