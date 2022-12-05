@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:matching_app/constants/routes.dart' as routes;
 import 'package:matching_app/details/rounded_button.dart';
 import 'package:matching_app/details/sns_bottom_navigation_bar.dart';
+import 'package:matching_app/details/sns_drawer.dart';
 import 'package:matching_app/firebase_options.dart';
 import 'package:matching_app/models/main_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -11,7 +12,7 @@ import 'package:matching_app/models/signup_model.dart';
 import 'package:matching_app/models/sns_bottom_navigation_bar_model.dart';
 import 'package:matching_app/views/login_page.dart';
 import 'package:matching_app/views/main/chat_screen.dart';
-import 'package:matching_app/views/main/club_screen.dart';
+import 'package:matching_app/views/main/circle_screen.dart';
 import 'package:matching_app/views/main/friend_screen.dart';
 import 'package:matching_app/views/main/home_screen.dart';
 
@@ -30,16 +31,13 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final User? onceUser = FirebaseAuth.instance.currentUser;
 
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Matching-App',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.lightGreen,
       ),
-    home: onceUser == null
-          ? LoginPage()
-          : MyHomePage(),
+      home: onceUser == null ? LoginPage() : MyHomePage(),
     );
   }
 }
@@ -54,23 +52,22 @@ class MyHomePage extends ConsumerWidget {
         ref.watch(snsBottomNavigationBarProvider);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Matching for your hobby')
-        ),
-        body: PageView(
-              controller: snsBottomNavigationBarModel.pageController,
-              onPageChanged: (index) =>
-                  snsBottomNavigationBarModel.onPageChanged(index: index),
-              //childrenの数はElementsの数
-              children: [
-                //注意：ページじゃないのでScaffold
-                HomeScreen(),
-                FriendScreen(),
-                ClubScreen(),
-                ChatScreen(),
-              ],
-            ),
-        bottomNavigationBar: SNSBottomNavigationBar(snsBottomNavigationBarModel: snsBottomNavigationBarModel),
+      appBar: AppBar(title: Text('Match Hobby')),
+      bottomNavigationBar: SNSBottomNavigationBar(
+          snsBottomNavigationBarModel: snsBottomNavigationBarModel),
+      drawer: SNSDrawer(),
+      body: PageView(
+        controller: snsBottomNavigationBarModel.pageController,
+        onPageChanged: (index) =>
+            snsBottomNavigationBarModel.onPageChanged(index: index),
+        //childrenの数はElementsの数
+        children: [
+          //注意：ページじゃないのでScaffold
+          HomeScreen(),
+          FriendScreen(),
+          ClubScreen(),
+        ],
+      ),
     );
   }
 }

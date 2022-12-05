@@ -8,6 +8,4 @@ final List<BottomNavigationBarItem> bottomNavigationBarElements = [
   label: ''),
   BottomNavigationBarItem(icon: Icon(Icons.people_alt),
   label: ''),
-  BottomNavigationBarItem(icon: Icon(Icons.messenger_outline_rounded),
-  label: ''),
 ];

@@ -20,14 +20,14 @@ class SNSBottomNavigationBarModel extends ChangeNotifier {
   }
 
   void onPageChanged({required int index}) {
+    setPageController();
     currentIndex = index;
     notifyListeners();
   }
 
   void onTabTapped({required int index}) {
     pageController.animateToPage(index,
-        duration: Duration(milliseconds: 300),
-        curve: Curves.ease);
+        duration: Duration(milliseconds: 300), curve: Curves.ease);
   }
 
   void setPageController() {
