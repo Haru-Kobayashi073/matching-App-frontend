@@ -6,9 +6,11 @@ import 'package:matching_app/details/rounded_password_field.dart';
 import 'package:matching_app/details/rounded_text_field.dart';
 import 'package:matching_app/constants/routes.dart' as routes;
 import 'package:matching_app/models/login_model.dart';
+import 'package:matching_app/models/main_model.dart';
 
 class LoginPage extends ConsumerWidget {
-  const LoginPage({super.key});
+  const LoginPage({super.key, required this.mainModel});
+  final MainModel mainModel;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -43,7 +45,7 @@ class LoginPage extends ConsumerWidget {
               color: Colors.white,
               borderColor: Colors.white),
           RoundedButton(
-              onPressed: () async => await loginModel.login(context: context),
+              onPressed: () async => await loginModel.login(context: context, mainModel: mainModel),
               widthRate: 0.4,
               color: Colors.blue,
               text: 'ログイン'),

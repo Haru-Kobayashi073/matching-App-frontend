@@ -29,7 +29,6 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final User? onceUser = FirebaseAuth.instance.currentUser;
     const int _0xff7a9beePrimaryValue = 0xff7a9bee;
     const MaterialColor customSwatch = MaterialColor(
       _0xff7a9beePrimaryValue,
@@ -46,6 +45,10 @@ class MyApp extends ConsumerWidget {
         900: Color(0xFF1A237E),
       },
     );
+    // MyAppが起動した最初の時にユーザーがログインしているかどうかの確認
+    //この変数を一回きり
+    final User? onceUser = FirebaseAuth.instance.currentUser;
+    final MainModel mainModel = ref.watch(mainProvider);
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -53,7 +56,7 @@ class MyApp extends ConsumerWidget {
       theme: ThemeData(
         primarySwatch: customSwatch,
       ),
-      home: onceUser == null ? LoginPage() : MyHomePage(),
+      home: onceUser == null ? LoginPage(mainModel: mainModel,) : MyHomePage(),
     );
   }
 }
@@ -71,7 +74,9 @@ class MyHomePage extends ConsumerWidget {
       appBar: AppBar(title: Text('Match Hobby')),
       bottomNavigationBar: SNSBottomNavigationBar(
           snsBottomNavigationBarModel: snsBottomNavigationBarModel),
-      drawer: SNSDrawer(),
+      drawer: SNSDrawer(
+        mainModel: mainModel,
+      ),
       body: PageView(
         controller: snsBottomNavigationBarModel.pageController,
         onPageChanged: (index) =>
@@ -79,7 +84,7 @@ class MyHomePage extends ConsumerWidget {
         //childrenの数はElementsの数
         children: [
           //注意：ページじゃないのでScaffold
-          HomeScreen(),
+          HomeScreen(mainModel: mainModel,),
           FriendScreen(),
           ClubScreen(),
         ],
