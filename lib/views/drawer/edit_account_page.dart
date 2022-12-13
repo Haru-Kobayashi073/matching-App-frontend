@@ -15,9 +15,9 @@ class EditAccountPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final maxheight = MediaQuery.of(context).size.height;
-    final FirestoreUser firestoreUser = mainModel.firestoreUser;
     final TextEditingController textEditingController = TextEditingController();
     final EditAccountModel editAccountModel = ref.watch(editAccountProvider);
+    final FirestoreUser firestoreUser = mainModel.firestoreUser;
 
     return Scaffold(
       appBar: AppBar(title: const Text('プロフィール編集')),
@@ -74,7 +74,8 @@ class EditAccountPage extends ConsumerWidget {
             //   ],
             // ),
             RoundedButton(
-                onPressed: () async => await editAccountModel.updateUserInfo(context: context, mainModel: mainModel),
+                onPressed: () async => await editAccountModel.updateUserInfo(
+                    context: context, mainModel: mainModel),
                 widthRate: 0.5,
                 color: Color(0xff7a9bee),
                 text: '更新')

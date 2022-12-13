@@ -43,6 +43,7 @@ dependencies:
   flutter_riverpod: ^2.1.1
   uuid: ^3.0.7
   decorated_icon: ^1.2.1
+  flutter_native_splash: ^2.2.16
 
 dev_dependencies:
   json_serializable: ^6.5.4
@@ -74,6 +75,10 @@ flutter:
 
   assets:
     - images/
+
+flutter_native_splash:
+  image: "images/join_left_FILL0_wght400_GRAD0_opsz48.png" 
+  color: "7A9BEE"
 
   # To add assets to your application, add an assets section, like this:
   # assets:

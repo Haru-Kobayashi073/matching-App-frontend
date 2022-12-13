@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:matching_app/constants/routes.dart' as routes;
 import 'package:matching_app/details/rounded_button.dart';
 import 'package:matching_app/details/sns_bottom_navigation_bar.dart';
@@ -17,7 +18,8 @@ import 'package:matching_app/views/main/friend_screen.dart';
 import 'package:matching_app/views/main/home_screen.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -26,6 +28,8 @@ void main() async {
 
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});
+
+
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -77,7 +81,11 @@ class MyHomePage extends ConsumerWidget {
       drawer: SNSDrawer(
         mainModel: mainModel,
       ),
-      body: PageView(
+      body: mainModel.isLoading
+          ? const Center(
+              child: Text('Loading...'),
+            )
+          : PageView(
         controller: snsBottomNavigationBarModel.pageController,
         onPageChanged: (index) =>
             snsBottomNavigationBarModel.onPageChanged(index: index),

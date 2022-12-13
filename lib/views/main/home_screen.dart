@@ -11,14 +11,14 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final maxWidth = MediaQuery.of(context).size.width;
-    final maxheight = MediaQuery.of(context).size.height;
+    // final maxWidth = MediaQuery.of(context).size.width;
+    // final maxheight = MediaQuery.of(context).size.height;
     final FirestoreUser firestoreUser = mainModel.firestoreUser;
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: const Icon(Icons.search),
+        child: const Icon(Icons.connect_without_contact,size: 36,),
       ),
       body: Center(
         child: Column(
@@ -35,11 +35,12 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             Text(
-              firestoreUser.userName,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+              firestoreUser.
+              userName,
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
             ),
-            SizedBox(
-              height: maxheight * 0.05,
+            const SizedBox(
+              height: 5,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,

@@ -20,7 +20,7 @@ class UserCard extends StatelessWidget {
               const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Icon(
-                  Icons.person,
+                  Icons.account_circle_rounded,
                   size: 48,
                 ),
               ),
