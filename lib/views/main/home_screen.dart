@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // final maxWidth = MediaQuery.of(context).size.width;
     // final maxheight = MediaQuery.of(context).size.height;
-    final FirestoreUser firestoreUser = mainModel.firestoreUser;
+    late FirestoreUser firestoreUser = mainModel.firestoreUser;
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
@@ -27,18 +27,13 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Icon(
-                Icons.account_circle_rounded,
-                size: 120,
-              ),
-            ),
+            UserImage(length: 180, userAvater: firestoreUser.userAvater),
             Text(
               firestoreUser.
               userName,
               style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
             ),
+            // Text(firestoreUser.userId),
             const SizedBox(
               height: 5,
             ),

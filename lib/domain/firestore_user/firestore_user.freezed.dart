@@ -22,9 +22,14 @@ FirestoreUser _$FirestoreUserFromJson(Map<String, dynamic> json) {
 mixin _$FirestoreUser {
   dynamic get createdAt => throw _privateConstructorUsedError;
   dynamic get updatedAt => throw _privateConstructorUsedError;
+  dynamic get deletedAt => throw _privateConstructorUsedError;
+  bool get isMatch => throw _privateConstructorUsedError;
   String get userName => throw _privateConstructorUsedError;
+  String get userAvater => throw _privateConstructorUsedError;
+  String get selfIntro => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,9 +46,14 @@ abstract class $FirestoreUserCopyWith<$Res> {
   $Res call(
       {dynamic createdAt,
       dynamic updatedAt,
+      dynamic deletedAt,
+      bool isMatch,
       String userName,
+      String userAvater,
+      String selfIntro,
       String userId,
-      String email});
+      String email,
+      String password});
 }
 
 /// @nodoc
@@ -61,9 +71,14 @@ class _$FirestoreUserCopyWithImpl<$Res, $Val extends FirestoreUser>
   $Res call({
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? deletedAt = null,
+    Object? isMatch = null,
     Object? userName = null,
+    Object? userAvater = null,
+    Object? selfIntro = null,
     Object? userId = null,
     Object? email = null,
+    Object? password = null,
   }) {
     return _then(_value.copyWith(
       createdAt: null == createdAt
@@ -74,9 +89,25 @@ class _$FirestoreUserCopyWithImpl<$Res, $Val extends FirestoreUser>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as dynamic,
+      deletedAt: null == deletedAt
+          ? _value.deletedAt
+          : deletedAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      isMatch: null == isMatch
+          ? _value.isMatch
+          : isMatch // ignore: cast_nullable_to_non_nullable
+              as bool,
       userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
+              as String,
+      userAvater: null == userAvater
+          ? _value.userAvater
+          : userAvater // ignore: cast_nullable_to_non_nullable
+              as String,
+      selfIntro: null == selfIntro
+          ? _value.selfIntro
+          : selfIntro // ignore: cast_nullable_to_non_nullable
               as String,
       userId: null == userId
           ? _value.userId
@@ -85,6 +116,10 @@ class _$FirestoreUserCopyWithImpl<$Res, $Val extends FirestoreUser>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -101,9 +136,14 @@ abstract class _$$_FirestoreUserCopyWith<$Res>
   $Res call(
       {dynamic createdAt,
       dynamic updatedAt,
+      dynamic deletedAt,
+      bool isMatch,
       String userName,
+      String userAvater,
+      String selfIntro,
       String userId,
-      String email});
+      String email,
+      String password});
 }
 
 /// @nodoc
@@ -119,9 +159,14 @@ class __$$_FirestoreUserCopyWithImpl<$Res>
   $Res call({
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? deletedAt = null,
+    Object? isMatch = null,
     Object? userName = null,
+    Object? userAvater = null,
+    Object? selfIntro = null,
     Object? userId = null,
     Object? email = null,
+    Object? password = null,
   }) {
     return _then(_$_FirestoreUser(
       createdAt: null == createdAt
@@ -132,9 +177,25 @@ class __$$_FirestoreUserCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as dynamic,
+      deletedAt: null == deletedAt
+          ? _value.deletedAt
+          : deletedAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      isMatch: null == isMatch
+          ? _value.isMatch
+          : isMatch // ignore: cast_nullable_to_non_nullable
+              as bool,
       userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
+              as String,
+      userAvater: null == userAvater
+          ? _value.userAvater
+          : userAvater // ignore: cast_nullable_to_non_nullable
+              as String,
+      selfIntro: null == selfIntro
+          ? _value.selfIntro
+          : selfIntro // ignore: cast_nullable_to_non_nullable
               as String,
       userId: null == userId
           ? _value.userId
@@ -143,6 +204,10 @@ class __$$_FirestoreUserCopyWithImpl<$Res>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -154,9 +219,14 @@ class _$_FirestoreUser with DiagnosticableTreeMixin implements _FirestoreUser {
   const _$_FirestoreUser(
       {required this.createdAt,
       required this.updatedAt,
+      required this.deletedAt,
+      required this.isMatch,
       required this.userName,
+      required this.userAvater,
+      required this.selfIntro,
       required this.userId,
-      required this.email});
+      required this.email,
+      required this.password});
 
   factory _$_FirestoreUser.fromJson(Map<String, dynamic> json) =>
       _$$_FirestoreUserFromJson(json);
@@ -166,15 +236,25 @@ class _$_FirestoreUser with DiagnosticableTreeMixin implements _FirestoreUser {
   @override
   final dynamic updatedAt;
   @override
+  final dynamic deletedAt;
+  @override
+  final bool isMatch;
+  @override
   final String userName;
+  @override
+  final String userAvater;
+  @override
+  final String selfIntro;
   @override
   final String userId;
   @override
   final String email;
+  @override
+  final String password;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'FirestoreUser(createdAt: $createdAt, updatedAt: $updatedAt, userName: $userName, userId: $userId, email: $email)';
+    return 'FirestoreUser(createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt, isMatch: $isMatch, userName: $userName, userAvater: $userAvater, selfIntro: $selfIntro, userId: $userId, email: $email, password: $password)';
   }
 
   @override
@@ -184,9 +264,14 @@ class _$_FirestoreUser with DiagnosticableTreeMixin implements _FirestoreUser {
       ..add(DiagnosticsProperty('type', 'FirestoreUser'))
       ..add(DiagnosticsProperty('createdAt', createdAt))
       ..add(DiagnosticsProperty('updatedAt', updatedAt))
+      ..add(DiagnosticsProperty('deletedAt', deletedAt))
+      ..add(DiagnosticsProperty('isMatch', isMatch))
       ..add(DiagnosticsProperty('userName', userName))
+      ..add(DiagnosticsProperty('userAvater', userAvater))
+      ..add(DiagnosticsProperty('selfIntro', selfIntro))
       ..add(DiagnosticsProperty('userId', userId))
-      ..add(DiagnosticsProperty('email', email));
+      ..add(DiagnosticsProperty('email', email))
+      ..add(DiagnosticsProperty('password', password));
   }
 
   @override
@@ -196,10 +281,18 @@ class _$_FirestoreUser with DiagnosticableTreeMixin implements _FirestoreUser {
             other is _$_FirestoreUser &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
+            const DeepCollectionEquality().equals(other.deletedAt, deletedAt) &&
+            (identical(other.isMatch, isMatch) || other.isMatch == isMatch) &&
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
+            (identical(other.userAvater, userAvater) ||
+                other.userAvater == userAvater) &&
+            (identical(other.selfIntro, selfIntro) ||
+                other.selfIntro == selfIntro) &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.email, email) || other.email == email));
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password));
   }
 
   @JsonKey(ignore: true)
@@ -208,9 +301,14 @@ class _$_FirestoreUser with DiagnosticableTreeMixin implements _FirestoreUser {
       runtimeType,
       const DeepCollectionEquality().hash(createdAt),
       const DeepCollectionEquality().hash(updatedAt),
+      const DeepCollectionEquality().hash(deletedAt),
+      isMatch,
       userName,
+      userAvater,
+      selfIntro,
       userId,
-      email);
+      email,
+      password);
 
   @JsonKey(ignore: true)
   @override
@@ -230,9 +328,14 @@ abstract class _FirestoreUser implements FirestoreUser {
   const factory _FirestoreUser(
       {required final dynamic createdAt,
       required final dynamic updatedAt,
+      required final dynamic deletedAt,
+      required final bool isMatch,
       required final String userName,
+      required final String userAvater,
+      required final String selfIntro,
       required final String userId,
-      required final String email}) = _$_FirestoreUser;
+      required final String email,
+      required final String password}) = _$_FirestoreUser;
 
   factory _FirestoreUser.fromJson(Map<String, dynamic> json) =
       _$_FirestoreUser.fromJson;
@@ -242,11 +345,21 @@ abstract class _FirestoreUser implements FirestoreUser {
   @override
   dynamic get updatedAt;
   @override
+  dynamic get deletedAt;
+  @override
+  bool get isMatch;
+  @override
   String get userName;
+  @override
+  String get userAvater;
+  @override
+  String get selfIntro;
   @override
   String get userId;
   @override
   String get email;
+  @override
+  String get password;
   @override
   @JsonKey(ignore: true)
   _$$_FirestoreUserCopyWith<_$_FirestoreUser> get copyWith =>

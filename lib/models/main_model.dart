@@ -69,4 +69,10 @@ class MainModel extends ChangeNotifier {
     currentUser = FirebaseAuth.instance.currentUser;
     notifyListeners();
   }
+
+  void updateFrontUserInfo({required String newUserName, required String newUserImageURL}) {
+    //firestoreUserの中身を現在の現在のfirestoreUserをほぼコピーしてuserNameだけ変更したものに更新
+    firestoreUser = firestoreUser.copyWith(userName: newUserName, userAvater: newUserImageURL);
+    notifyListeners();
+  }
 }

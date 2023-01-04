@@ -36,7 +36,7 @@ class EditAccountPage extends ConsumerWidget {
             ),
             RoundedTextField(
                 keybordType: TextInputType.text,
-                onChanged: (value) {},
+                onChanged: (value) => editAccountModel.userName = value,
                 controller: textEditingController,
                 color: Colors.white,
                 borderColor: Colors.grey,
@@ -44,40 +44,11 @@ class EditAccountPage extends ConsumerWidget {
             SizedBox(
               height: maxheight * 0.05,
             ),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-            //   children: [
-            //     Column(
-            //       children: const [
-            //         Text(
-            //           '0',
-            //           style: TextStyle(fontSize: 20),
-            //         ),
-            //         Text(
-            //           'フレンド',
-            //           style: TextStyle(fontSize: 12),
-            //         ),
-            //       ],
-            //     ),
-            //     Column(
-            //       children: const [
-            //         Text(
-            //           '0',
-            //           style: TextStyle(fontSize: 20),
-            //         ),
-            //         Text(
-            //           '参加サークル',
-            //           style: TextStyle(fontSize: 12),
-            //         ),
-            //       ],
-            //     ),
-            //   ],
-            // ),
             RoundedButton(
                 onPressed: () async => await editAccountModel.updateUserInfo(
                     context: context, mainModel: mainModel),
                 widthRate: 0.5,
-                color: Color(0xff7a9bee),
+                color: const Color(0xff7a9bee),
                 text: '更新')
           ],
         ),

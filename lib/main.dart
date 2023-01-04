@@ -3,16 +3,13 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:matching_app/constants/routes.dart' as routes;
-import 'package:matching_app/details/rounded_button.dart';
 import 'package:matching_app/details/sns_bottom_navigation_bar.dart';
 import 'package:matching_app/details/sns_drawer.dart';
 import 'package:matching_app/firebase_options.dart';
 import 'package:matching_app/models/main_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:matching_app/models/signup_model.dart';
 import 'package:matching_app/models/sns_bottom_navigation_bar_model.dart';
 import 'package:matching_app/views/login_page.dart';
-import 'package:matching_app/views/main/chat_screen.dart';
 import 'package:matching_app/views/main/circle_screen.dart';
 import 'package:matching_app/views/main/friend_screen.dart';
 import 'package:matching_app/views/main/home_screen.dart';
@@ -75,7 +72,7 @@ class MyHomePage extends ConsumerWidget {
         ref.watch(snsBottomNavigationBarProvider);
 
     return Scaffold(
-      appBar: AppBar(title: Text('Match Hobby')),
+      appBar: AppBar(title: const Text('Match Hobby')),
       bottomNavigationBar: SNSBottomNavigationBar(
           snsBottomNavigationBarModel: snsBottomNavigationBarModel),
       drawer: SNSDrawer(
@@ -93,7 +90,7 @@ class MyHomePage extends ConsumerWidget {
         children: [
           //注意：ページじゃないのでScaffold
           HomeScreen(mainModel: mainModel,),
-          FriendScreen(),
+          FriendScreen(mainModel: mainModel,),
           ClubScreen(),
         ],
       ),

@@ -21,10 +21,15 @@ class SignupModel extends ChangeNotifier {
     final Timestamp now = Timestamp.now();
     final FirestoreUser firestoreUser = FirestoreUser(
       createdAt: now,
-      email: email,
-      userId: userId,
       updatedAt: now,
+      deletedAt: now,
+      isMatch: false,
+      userAvater: '',
+      selfIntro: '',
+      userId: userId,
       userName: "Alice",
+      email: email,
+      password: password,
     );
     final Map<String, dynamic> userData = firestoreUser.toJson();
     await FirebaseFirestore.instance
