@@ -12,9 +12,9 @@ class SNSDrawer extends StatelessWidget {
       child: ListView(
         children: [
           ListTile(
-            title: Text('account'),
+            title: const Text('account'),
             onTap: () =>
-                routes.toEditAccountPage(context: context, mainModel: mainModel),
+                routes.toAccountSettingPage(context: context, mainModel: mainModel),
           ),
         ],
       ),

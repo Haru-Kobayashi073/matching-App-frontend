@@ -57,7 +57,7 @@ class MyApp extends ConsumerWidget {
       theme: ThemeData(
         primarySwatch: customSwatch,
       ),
-      home: onceUser == null ? LoginPage(mainModel: mainModel,) : MyHomePage(),
+      home: onceUser == null ? LoginPage(mainModel: mainModel,) : const MyHomePage(),
     );
   }
 }
@@ -72,7 +72,7 @@ class MyHomePage extends ConsumerWidget {
         ref.watch(snsBottomNavigationBarProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Match Hobby')),
+      // appBar: AppBar(title: const Text('Match Hobby')),
       bottomNavigationBar: SNSBottomNavigationBar(
           snsBottomNavigationBarModel: snsBottomNavigationBarModel),
       drawer: SNSDrawer(
@@ -91,7 +91,7 @@ class MyHomePage extends ConsumerWidget {
           //注意：ページじゃないのでScaffold
           HomeScreen(mainModel: mainModel,),
           FriendScreen(mainModel: mainModel,),
-          ClubScreen(),
+          ClubScreen(mainModel: mainModel,),
         ],
       ),
     );

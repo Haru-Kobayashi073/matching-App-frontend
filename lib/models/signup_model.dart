@@ -49,6 +49,7 @@ class SignupModel extends ChangeNotifier {
       final String userId = user!.uid;
       await createFirestoreUser(context: context, userId: userId);
       print('ユーザーが作成されました');
+      Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       debugPrint(e.toString());
     }

@@ -58,7 +58,7 @@ class SignupPage extends ConsumerWidget {
               onChanged: (text) => signupModel.email = text,
               controller: emailController,
               color: Colors.white,
-              borderColor: Colors.white,
+              borderColor: Colors.grey,
               hintText: 'メールアドレス'),
           SizedBox(
             height: 20,
@@ -69,7 +69,7 @@ class SignupPage extends ConsumerWidget {
             onChanged: (text) => signupModel.password = text,
             toggleObscureText: () => signupModel.toggleIsObscure(),
             color: Colors.white,
-            borderColor: Colors.white,
+            borderColor: Colors.grey,
           ),
           SizedBox(
             height: 20,

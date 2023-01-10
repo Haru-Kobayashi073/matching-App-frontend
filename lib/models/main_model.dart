@@ -7,6 +7,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:matching_app/domain/firestore_user/firestore_user.dart';
 import 'package:uuid/uuid.dart';
+import 'package:matching_app/constants/routes.dart' as routes;
 
 final mainProvider = ChangeNotifierProvider((ref) => MainModel());
 
@@ -74,5 +75,11 @@ class MainModel extends ChangeNotifier {
     //firestoreUserの中身を現在の現在のfirestoreUserをほぼコピーしてuserNameだけ変更したものに更新
     firestoreUser = firestoreUser.copyWith(userName: newUserName, userAvater: newUserImageURL);
     notifyListeners();
+  }
+
+  Future<void> logout(
+      {required BuildContext context, required MainModel mainModel}) async {
+    await FirebaseAuth.instance.signOut();
+    routes.toLoginPage(context: context, mainModel: mainModel);
   }
 }

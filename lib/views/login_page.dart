@@ -32,7 +32,7 @@ class LoginPage extends ConsumerWidget {
               onChanged: (text) => loginModel.email = text,
               controller: emailController,
               color: Colors.white,
-              borderColor: Colors.white,
+              borderColor: Colors.grey,
               hintText: 'メールアドレス'),
           SizedBox(
             height: 20,
@@ -43,9 +43,9 @@ class LoginPage extends ConsumerWidget {
               passwordEditingController: passController,
               toggleObscureText: () => loginModel.toggleIsObscure(),
               color: Colors.white,
-              borderColor: Colors.white),
+              borderColor: Colors.grey),
           RoundedButton(
-              onPressed: () async => await loginModel.login(context: context, mainModel: mainModel),
+              onPressed: () async => await loginModel.login(context: context),
               widthRate: 0.4,
               color: Colors.blue,
               text: 'ログイン'),

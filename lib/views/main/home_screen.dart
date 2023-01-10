@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:matching_app/details/sns_drawer.dart';
 import 'package:matching_app/details/user_image.dart';
 import 'package:decorated_icon/decorated_icon.dart';
 import 'package:matching_app/domain/firestore_user/firestore_user.dart';
@@ -20,6 +21,10 @@ class HomeScreen extends StatelessWidget {
         onPressed: () {},
         child: const Icon(Icons.connect_without_contact,size: 36,),
       ),
+      drawer: SNSDrawer(
+        mainModel: mainModel,
+      ),
+      appBar: AppBar(title: const Text("Home"),),
       body: Center(
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.end,
@@ -65,7 +70,8 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ],
-            )
+            ),
+            
           ],
         ),
       ),
