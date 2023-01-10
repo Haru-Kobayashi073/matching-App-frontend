@@ -12,19 +12,33 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final maxWidth = MediaQuery.of(context).size.width;
-    // final maxheight = MediaQuery.of(context).size.height;
+    final maxWidth = MediaQuery.of(context).size.width;
+    final maxheight = MediaQuery.of(context).size.height;
     late FirestoreUser firestoreUser = mainModel.firestoreUser;
+
+    final tags = [
+      'お酒',
+      'テニス',
+      'アウトドア',
+      '漫画',
+      'スターウォーズ',
+      '古着',
+    ];
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: const Icon(Icons.connect_without_contact,size: 36,),
+        child: const Icon(
+          Icons.connect_without_contact,
+          size: 36,
+        ),
       ),
       drawer: SNSDrawer(
         mainModel: mainModel,
       ),
-      appBar: AppBar(title: const Text("Home"),),
+      appBar: AppBar(
+        title: const Text("Home"),
+      ),
       body: Center(
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.end,
@@ -34,8 +48,7 @@ class HomeScreen extends StatelessWidget {
             ),
             UserImage(length: 180, userAvater: firestoreUser.userAvater),
             Text(
-              firestoreUser.
-              userName,
+              firestoreUser.userName,
               style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
             ),
             // Text(firestoreUser.userId),
@@ -71,7 +84,55 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
             ),
-            
+            SizedBox(
+              height: maxheight * 0.05,
+            ),
+            Container(
+              width: maxWidth * 0.9,
+              decoration: const BoxDecoration(
+                border: Border(
+                  top: BorderSide(color: Colors.grey),
+                ),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: maxheight * 0.03,
+                  ),
+                  Wrap(
+                    runSpacing: 16,
+                    spacing: 12,
+                    children: tags.map((tag) {
+                      return InkWell(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(32)),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 8),
+                          decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(32)),
+                            border: Border.all(
+                              width: 2,
+                              color: const Color(0xff7a9bee),
+                            ),
+                          ),
+                          child: Text(
+                            tag,
+                            style: const TextStyle(
+                              color: Color(0xff7a9bee),
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
